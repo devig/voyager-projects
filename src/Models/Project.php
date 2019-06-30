@@ -1,6 +1,6 @@
 <?php
 
-namespace App;
+namespace Tjventurini\VoyagerProjects\Models;
 
 // use App\Scopes\ProjectScope;
 use Illuminate\Database\Eloquent\Model;
