@@ -1,0 +1,12 @@
+{
+    "name": "tjventurini/voyager-projects",
+    "description": "Projects for the voyager admin panel.",
+    "type": "package",
+    "authors": [
+        {
+            "name": "Thomas Venturini",
+            "email": "thomas@venturini.codes"
+        }
+    ],
+    "require": {}
+}
