@@ -4,6 +4,8 @@ namespace Tjventurini\VoyagerProjects;
 
 use Illuminate\Events\Dispatcher;
 use Illuminate\Support\ServiceProvider;
+use Tjventurini\VoyagerProjects\Models\Project;
+use Tjventurini\VoyagerProjects\Observers\ProjectObserver;
 
 class VoyagerProjectsServiceProvider extends ServiceProvider
 {
@@ -45,6 +47,9 @@ class VoyagerProjectsServiceProvider extends ServiceProvider
 
         // tell laravel where to find routes
         $this->loadRoutesFrom(__DIR__.'/../routes/routes.php');
+
+        // listen to project model events
+        Project::observe(ProjectObserver::class);
     }
 
     /**
