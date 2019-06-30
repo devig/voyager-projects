@@ -8,5 +8,21 @@
             "email": "thomas@venturini.codes"
         }
     ],
-    "require": {}
+    "require": {
+        "cviebrock/eloquent-sluggable": "^4.8",
+        "tcg/voyager": "^1.2"
+    },
+    "autoload": {
+        "psr-4": {
+            "Tjventurini\\VoyagerProjects\\Seeds\\": "database/seeds/",
+            "Tjventurini\\VoyagerProjects\\": "src/"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Tjventurini\\VoyagerProjects\\VoyagerProjectsServiceProvider"
+            ]
+        }
+    }
 }
