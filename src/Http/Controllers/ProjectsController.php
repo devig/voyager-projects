@@ -1,6 +1,6 @@
 <?php
 
-namespace Tjventurini\VoyagerProjects\Http\Controllers\Voyager;
+namespace Tjventurini\VoyagerProjects\Http\Controllers;
 
 use Illuminate\Http\Request;
 use TCG\Voyager\Http\Controllers\VoyagerBaseController;
