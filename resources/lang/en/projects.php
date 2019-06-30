@@ -24,6 +24,14 @@ return [
     */
     
     'data_rows' => [
+        'id' => 'ID',
+        'name' => 'Name',
+        'description' => 'Description',
+        'slug' => 'Slug',
+        'url' => 'Url',
+        'token' => 'Token',
+        'created_at' => 'Created At',
+        'updated_at' => 'Updated At',
     ],
     
 ];
