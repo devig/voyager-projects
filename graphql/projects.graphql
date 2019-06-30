@@ -1,0 +1,26 @@
+##########################################
+# Queries
+extend type Query {
+    projects: [Project!]! @paginate(type: "paginator" model: "Tjventurini\\VoyagerProjects\\Models\\Project")
+    project(slug: String! @eq): Project @find(model: "Tjventurini\\VoyagerProjects\\Models\\Project")
+}
+
+##########################################
+# Mutations
+
+##########################################
+# Types
+type Project {
+    id: ID!
+    name: String!
+    description: String!
+    slug: String!
+    url: String!
+
+    created_at: DateTime
+    updated_at: DateTime
+}
+
+##########################################
+# Input Types
+

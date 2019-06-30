@@ -10,7 +10,11 @@
     ],
     "require": {
         "cviebrock/eloquent-sluggable": "^4.8",
+        "nuwave/lighthouse": "^3.7",
         "tcg/voyager": "^1.2"
+    },
+    "require-dev": {
+        "mll-lab/laravel-graphql-playground": "^1.0"
     },
     "autoload": {
         "psr-4": {
