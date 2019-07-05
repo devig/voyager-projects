@@ -52,10 +52,10 @@ class Project extends Model
      */
     public function users(): BelongsToMany
     {
-        $model = config('project.models.users');
-        $table = config('project.tables.users');
-        $project_id = config('project.foreign_keys.projects');
-        $user_id = config('project.foreign_keys.users');
+        $model = config('voyager-projects.models.users');
+        $table = config('voyager-projects.tables.users');
+        $project_id = config('voyager-projects.foreign_keys.projects');
+        $user_id = config('voyager-projects.foreign_keys.users');
 
         return $this->belongsToMany($model, $table, $project_id, $user_id);
     }
@@ -66,10 +66,10 @@ class Project extends Model
      */
     public function tags(): BelongsToMany
     {
-        $model = config('project.models.tags');
-        $table = config('project.tables.tags');
-        $project_id = config('project.foreign_keys.projects');
-        $tag_id = config('project.foreign_keys.tags');
+        $model = config('voyager-projects.models.tags');
+        $table = config('voyager-projects.tables.tags');
+        $project_id = config('voyager-projects.foreign_keys.projects');
+        $tag_id = config('voyager-projects.foreign_keys.tags');
 
         return $this->belongsToMany($model, $table, $project_id, $tag_id);
     }
@@ -80,8 +80,8 @@ class Project extends Model
      */
     public function posts(): HasMany
     {
-        $model = config('project.models.posts');
-        $post_id = config('project.foreign_keys.posts');
+        $model = config('voyager-projects.models.posts');
+        $post_id = config('voyager-projects.foreign_keys.posts');
 
         return $this->hasMany($model, $post_id);
     }
