@@ -10,6 +10,16 @@
 */
 
 return [
+
+    /*
+    |--------------------------------------------------------------------------
+    | Labels
+    |--------------------------------------------------------------------------
+    |
+    | In this section you will find the main labels of this package.
+    |
+    */
+   
     'label_plural' => 'Projects',
     'label_singular' => 'Project',
 
