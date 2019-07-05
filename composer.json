@@ -11,7 +11,8 @@
     "require": {
         "cviebrock/eloquent-sluggable": "^4.8",
         "nuwave/lighthouse": "^3.7",
-        "tcg/voyager": "^1.2"
+        "tcg/voyager": "^1.2",
+        "tjventurini/voyager-tags": "*"
     },
     "require-dev": {
         "mll-lab/laravel-graphql-playground": "^1.0"
