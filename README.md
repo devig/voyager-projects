@@ -35,10 +35,10 @@ return [
 You will need to publish the assets of this package to overwrite the things you need. Here is a list of all available publishable resources as the commands needed to publish them.
 
 ```bash
-php artisan vendor:publish --provider="Tjventurini\VoyagerProjects\VoyagerProjectsServiceProvider" --tag=config
-php artisan vendor:publish --provider="Tjventurini\VoyagerProjects\VoyagerProjectsServiceProvider" --tag=views
-php artisan vendor:publish --provider="Tjventurini\VoyagerProjects\VoyagerProjectsServiceProvider" --tag=lang
-php artisan vendor:publish --provider="Tjventurini\VoyagerProjects\VoyagerProjectsServiceProvider" --tag=graphql
+php artisan vendor:publish --provider="Tjventurini\VoyagerProjects\VoyagerProjectsServiceProvider" --tag=config --force
+php artisan vendor:publish --provider="Tjventurini\VoyagerProjects\VoyagerProjectsServiceProvider" --tag=views --force
+php artisan vendor:publish --provider="Tjventurini\VoyagerProjects\VoyagerProjectsServiceProvider" --tag=lang --force
+php artisan vendor:publish --provider="Tjventurini\VoyagerProjects\VoyagerProjectsServiceProvider" --tag=graphql --force
 ```
 
 Now run the migrations.
