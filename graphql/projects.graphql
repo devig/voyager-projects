@@ -1,6 +1,6 @@
 ##########################################
 # Queries
-extend type Query {
+extend type Query @middleware(checks: ["projectToken"]) {
     projects: [Project!]! @paginate(type: "paginator" model: "Tjventurini\\VoyagerProjects\\Models\\Project")
     project(slug: String! @eq): Project @find(model: "Tjventurini\\VoyagerProjects\\Models\\Project")
 }
