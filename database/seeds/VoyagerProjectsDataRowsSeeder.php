@@ -122,6 +122,33 @@ class VoyagerProjectsDataRowsSeeder extends Seeder
                 'order' => 1,
             ]);
 
+            // field users
+            $field_name = DataRow::updateOrCreate([
+                'data_type_id' => $data_type->id,
+                'field' => 'project_belongstomany_user_relationship',
+            ], [
+                'type' => 'relationship',
+                'display_name' => 'Users',
+                'required' => 1,
+                'browse' => 1,
+                'read' => 1,
+                'edit' => 1,
+                'add' => 1,
+                'delete' => 1,
+                'details' => [
+                    'model' => "App\\User",
+                    'table' => 'users',
+                    'type' => 'belongsToMany',
+                    'column' => 'id',
+                    'key' => 'id',
+                    'label' => 'name',
+                    'pivot_table' => 'project_user',
+                    'pivot' => "1",
+                    'taggable' => null,
+                ],
+                'order' => 1,
+            ]);
+
             // field created_at
             $field_created_at = DataRow::updateOrCreate([
                 'data_type_id' => $data_type->id,
