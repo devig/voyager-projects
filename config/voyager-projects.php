@@ -22,20 +22,20 @@ return [
     */
 
     'models' => [
-        // 'users' => \App\User::class,
-        // 'tags' => \App\Tag::class,
-        // 'posts' => App\Post::class,
+        'users' => \App\User::class,
+        'tags' => \Tjventurini\VoyagerTags\Models\Tag::class,
+        'posts' => \Tjventurini\VoyagerPosts\Models\Post::class,
     ],
    
     'tables' => [
-        // 'users' => 'project_user',
-        // 'tags' => 'project_tag',
+        'users' => 'project_user',
+        'tags' => 'project_tag',
     ],
 
     'foreign_keys' => [
-        // 'projects' => 'project_id',
-        // 'project' => 'project_id',
-        // 'users' => 'user_id',
-        // 'tags' => 'tag_id',
+        'projects' => 'project_id',
+        'project' => 'project_id',
+        'users' => 'user_id',
+        'tags' => 'tag_id',
     ],
 ];
