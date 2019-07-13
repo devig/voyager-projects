@@ -21,6 +21,7 @@ type Project {
     tags: [Tag!]!
     posts: [Post!]!
     pages: [Page!]!
+    contentBlocks: [ContentBlock!]!
 
     created_at: DateTime
     updated_at: DateTime

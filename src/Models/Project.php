@@ -98,6 +98,18 @@ class Project extends Model
         return $this->hasMany($model, $project_id);
     }
 
+    /**
+     * Relationship with contentBlock model.
+     * @return Illuminate\Database\Eloquent\Relations\HasMany The requested relationship.
+     */
+    public function contentBlocks(): HasMany
+    {
+        $model = config('voyager-projects.models.content-blocks');
+        $project_id = config('voyager-projects.foreign_keys.projects');
+
+        return $this->hasMany($model, $project_id);
+    }
+
     /*
     |--------------------------------------------------------------------------
     | Sluggable

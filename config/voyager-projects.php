@@ -26,6 +26,7 @@ return [
         'tags' => \Tjventurini\VoyagerTags\Models\Tag::class,
         'posts' => \Tjventurini\VoyagerPosts\Models\Post::class,
         'pages' => \Tjventurini\VoyagerPages\Models\Page::class,
+        'content-block' => \Tjventurini\VoyagerContentBlocks\Models\ContentBlock::class,
     ],
    
     'tables' => [
