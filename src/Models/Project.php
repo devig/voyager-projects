@@ -2,7 +2,6 @@
 
 namespace Tjventurini\VoyagerProjects\Models;
 
-// use App\Scopes\ProjectScope;
 use Illuminate\Database\Eloquent\Model;
 use Cviebrock\EloquentSluggable\Sluggable;
 use Illuminate\Database\Eloquent\Relations\HasMany;
@@ -32,9 +31,6 @@ class Project extends Model
     protected static function boot(): void
     {
         parent::boot();
-
-        // apply scopes
-        // static::addGlobalScope(new ProjectScope);
     }
     
     /*

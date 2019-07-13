@@ -14,14 +14,44 @@ class ProjectsController extends VoyagerBaseController
      */
     private function validation(Request $request)
     {
-        $request->validate([
+        $request->validate($this->rules(), $this->messages());
+    }
+
+    /**
+     * Rules for validation.
+     *
+     * @return array
+     */
+    private function rules(): array
+    {
+        $slug_rule = 'required|min:3';
+
+        if (request()->has('id')) {
+            $slug_rule .= '|unique:projects';
+        }
+
+        $rules = [
             'name' => 'required|min:3',
             'description' => 'required|min:3',
-            'slug' => 'required|unique:projects|min:3',
+            'slug' => $slug_rule,
             'project_belongstomany_user_relationship' => 'required|exists:users,id',
-        ], [
+        ];
+
+        return $rules;
+    }
+
+    /**
+     * Messages for validation.
+     *
+     * @return array
+     */
+    private function messages(): array
+    {
+        $messages = [
             'project_belongstomany_user_relationship.required' => trans('validation.required', ['attribute' => 'User']),
-        ]);
+        ];
+
+        return $messages;
     }
 
     /**
