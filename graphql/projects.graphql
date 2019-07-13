@@ -19,6 +19,7 @@ type Project {
 
     users: [User!]!
     tags: [Tag!]!
+    posts: [Post!]!
 
     created_at: DateTime
     updated_at: DateTime
