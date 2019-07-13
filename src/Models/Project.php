@@ -81,9 +81,21 @@ class Project extends Model
     public function posts(): HasMany
     {
         $model = config('voyager-projects.models.posts');
-        $post_id = config('voyager-projects.foreign_keys.posts');
+        $project_id = config('voyager-projects.foreign_keys.project');
 
-        return $this->hasMany($model, $post_id);
+        return $this->hasMany($model, $project_id);
+    }
+
+    /**
+     * Relationship with page model.
+     * @return Illuminate\Database\Eloquent\Relations\HasMany The requested relationship.
+     */
+    public function pages(): HasMany
+    {
+        $model = config('voyager-projects.models.pages');
+        $project_id = config('voyager-projects.foreign_keys.projects');
+
+        return $this->hasMany($model, $project_id);
     }
 
     /*

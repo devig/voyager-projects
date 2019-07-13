@@ -25,11 +25,13 @@ return [
         'users' => \App\User::class,
         'tags' => \Tjventurini\VoyagerTags\Models\Tag::class,
         'posts' => \Tjventurini\VoyagerPosts\Models\Post::class,
+        'pages' => \Tjventurini\VoyagerPages\Models\Page::class,
     ],
    
     'tables' => [
         'users' => 'project_user',
         'tags' => 'project_tag',
+        'pages' => 'page_project',
     ],
 
     'foreign_keys' => [
@@ -37,5 +39,6 @@ return [
         'project' => 'project_id',
         'users' => 'user_id',
         'tags' => 'tag_id',
+        'pages' => 'page_id',
     ],
 ];
