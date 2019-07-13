@@ -14,6 +14,7 @@ class ProjectObserver
      */
     public function saving(Project $project): void
     {
+        // check that url has http or https protocol
         if (!preg_match("/^(http|https):\\/\\//", $project->url)) {
             $project->url = "https://" . $project->url;
         }
@@ -26,7 +27,18 @@ class ProjectObserver
      */
     public function creating(Project $project): void
     {
-        // $project->users()->sync([\Auth::user()->id], false);
+        // create token
         $project->token = Str::random(60);
+    }
+
+    /**
+     * Handle created event of project model.
+     * @param  Project $project The project model.
+     * @return void
+     */
+    public function created(Project $project): void
+    {
+        // save user
+        $project->users()->sync([\Auth::user()->id], false);
     }
 }
