@@ -4,6 +4,7 @@ namespace Tjventurini\VoyagerProjects\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Cviebrock\EloquentSluggable\Sluggable;
+use Tjventurini\VoyagerCMS\Scopes\UsersScope;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
@@ -31,6 +32,9 @@ class Project extends Model
     protected static function boot(): void
     {
         parent::boot();
+
+        // apply scopes
+        static::addGlobalScope(new UsersScope);
     }
     
     /*
