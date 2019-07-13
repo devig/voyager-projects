@@ -30,15 +30,4 @@ class ProjectObserver
         // create token
         $project->token = Str::random(60);
     }
-
-    /**
-     * Handle created event of project model.
-     * @param  Project $project The project model.
-     * @return void
-     */
-    public function created(Project $project): void
-    {
-        // save user
-        $project->users()->sync([\Auth::user()->id], false);
-    }
 }
