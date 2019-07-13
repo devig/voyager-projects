@@ -18,7 +18,9 @@ class ProjectsController extends VoyagerBaseController
             'name' => 'required|min:3',
             'description' => 'required|min:3',
             'slug' => 'required|unique:projects|min:3',
-            // 'project_belongstomany_user_relationship' => 'required|exists:users,id',
+            'project_belongstomany_user_relationship' => 'required|exists:users,id',
+        ], [
+            'project_belongstomany_user_relationship.required' => trans('validation.required', ['attribute' => 'User']),
         ]);
     }
 
