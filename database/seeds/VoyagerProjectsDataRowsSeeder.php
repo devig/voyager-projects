@@ -33,7 +33,7 @@ class VoyagerProjectsDataRowsSeeder extends Seeder
                 'edit' => 0,
                 'add' => 0,
                 'delete' => 0,
-                'details' => json_encode([]),
+                'details' => [],
                 'order' => 1,
             ]);
 
@@ -50,7 +50,7 @@ class VoyagerProjectsDataRowsSeeder extends Seeder
                 'edit' => 1,
                 'add' => 1,
                 'delete' => 1,
-                'details' => json_encode([]),
+                'details' => [],
                 'order' => 1,
             ]);
 
@@ -67,7 +67,7 @@ class VoyagerProjectsDataRowsSeeder extends Seeder
                 'edit' => 1,
                 'add' => 1,
                 'delete' => 1,
-                'details' => json_encode([]),
+                'details' => [],
                 'order' => 1,
             ]);
 
@@ -84,7 +84,7 @@ class VoyagerProjectsDataRowsSeeder extends Seeder
                 'edit' => 1,
                 'add' => 1,
                 'delete' => 1,
-                'details' => json_encode([]),
+                'details' => [],
                 'order' => 1,
             ]);
 
@@ -101,7 +101,7 @@ class VoyagerProjectsDataRowsSeeder extends Seeder
                 'edit' => 1,
                 'add' => 1,
                 'delete' => 1,
-                'details' => json_encode([]),
+                'details' => [],
                 'order' => 1,
             ]);
 
@@ -118,7 +118,7 @@ class VoyagerProjectsDataRowsSeeder extends Seeder
                 'edit' => 0,
                 'add' => 0,
                 'delete' => 0,
-                'details' => json_encode([]),
+                'details' => [],
                 'order' => 1,
             ]);
 
@@ -162,7 +162,9 @@ class VoyagerProjectsDataRowsSeeder extends Seeder
                 'edit' => 0,
                 'add' => 0,
                 'delete' => 1,
-                'details' => json_encode([]),
+                'details' => [
+                    'format' => '%Y-%m-%d %H:%M',
+                ],
                 'order' => 1,
             ]);
 
@@ -179,7 +181,9 @@ class VoyagerProjectsDataRowsSeeder extends Seeder
                 'edit' => 0,
                 'add' => 0,
                 'delete' => 1,
-                'details' => json_encode([]),
+                'details' => [
+                    'format' => '%Y-%m-%d %H:%M',
+                ],
                 'order' => 1,
             ]);
         });
