@@ -21,14 +21,15 @@ class VoyagerProjectsMenuItemsSeeder extends Seeder
             $menu = Menu::where('name', 'admin')->firstOrFail();
 
             // create url
-            $url = route('voyager.projects.index', [], false);
+            $route = 'voyager.projects.index';
 
             // create the menu item
             $menuItem = MenuItem::updateOrCreate([
-                'url' => $url,
+                'route' => $route,
             ], [
                 'menu_id' => $menu->id,
                 'title' => trans('projects::projects.label_plural'),
+                'url' => '',
                 'target' => '_self',
                 'icon_class' => 'voyager-lab',
                 'color' => null,

@@ -12,6 +12,7 @@
 */
 
 Route::group(['prefix' => config('voyager.prefix')], function () {
+    
     // create namespace prefix
     $namespace = '\\Tjventurini\\VoyagerProjects\\Http\\Controllers\\';
 
