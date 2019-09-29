@@ -4,7 +4,7 @@ namespace Tjventurini\VoyagerProjects\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Cviebrock\EloquentSluggable\Sluggable;
-use Tjventurini\VoyagerCMS\Scopes\UsersScope;
+use Tjventurini\VoyagerProjects\Scopes\UsersScope;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 

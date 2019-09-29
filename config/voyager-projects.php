@@ -27,6 +27,7 @@ return [
         'posts' => \Tjventurini\VoyagerPosts\Models\Post::class,
         'pages' => \Tjventurini\VoyagerPages\Models\Page::class,
         'content-block' => \Tjventurini\VoyagerContentBlocks\Models\ContentBlock::class,
+        'projects' => \Tjventurini\VoyagerProjects\Models\Project::class,
     ],
    
     'tables' => [
