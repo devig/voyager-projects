@@ -27,7 +27,9 @@ class ProjectObserver
      */
     public function creating(Project $project): void
     {
-        // create token
-        $project->token = Str::random(60);
+        // create token if not set already
+        if (!$project->token) {
+            $project->token = Str::random(60);
+        }
     }
 }
