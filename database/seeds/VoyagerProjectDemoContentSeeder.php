@@ -24,7 +24,8 @@ class VoyagerProjectDemoContentSeeder extends Seeder
         ], [
             'name' => 'Hello World',
             'description' => 'Hello World Project',
-            'url' => 'http://hello-world.com'
+            'url' => 'http://hello-world.com',
+            'token' => 'LYbggOGeifHHoKj38qjbYBajW91Q176mXWKD4xM2TjzhcwSlTn9hUEhTJw41'
         ]);
 
         // connect projects with user
