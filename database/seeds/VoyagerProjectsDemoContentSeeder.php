@@ -7,9 +7,10 @@ use TCG\Voyager\Models\Menu;
 use Illuminate\Database\Seeder;
 use TCG\Voyager\Models\MenuItem;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Hash;
 use Tjventurini\VoyagerProjects\Models\Project;
 
-class VoyagerProjectDemoContentSeeder extends Seeder
+class VoyagerProjectsDemoContentSeeder extends Seeder
 {
     /**
      * Run the voyager tags package database seeders.
@@ -18,6 +19,15 @@ class VoyagerProjectDemoContentSeeder extends Seeder
      */
     public function run()
     {
+        // create user
+        User::firstOrCreate([
+            'email' => 'admin@admin.com'
+        ], [
+            'name' => 'Admin',
+            'password' => Hash::make('password'),
+            'role_id' => 1
+        ]);
+        
         // create project
         $HelloWorldProject = Project::updateOrCreate([
             'slug' => 'hello-world'

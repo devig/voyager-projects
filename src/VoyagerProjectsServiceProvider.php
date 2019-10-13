@@ -6,6 +6,7 @@ use Illuminate\Events\Dispatcher;
 use Illuminate\Support\ServiceProvider;
 use Tjventurini\VoyagerProjects\Models\Project;
 use Tjventurini\VoyagerProjects\Observers\ProjectObserver;
+use Tjventurini\VoyagerProjects\Console\Commands\VoyagerProjectsInstall;
 
 class VoyagerProjectsServiceProvider extends ServiceProvider
 {
@@ -50,6 +51,13 @@ class VoyagerProjectsServiceProvider extends ServiceProvider
 
         // listen to project model events
         Project::observe(ProjectObserver::class);
+
+        // register commands
+        if ($this->app->runningInConsole()) {
+            $this->commands([
+                VoyagerProjectsInstall::class,
+            ]);
+        }
     }
 
     /**

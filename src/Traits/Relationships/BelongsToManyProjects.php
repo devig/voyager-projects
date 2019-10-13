@@ -2,18 +2,18 @@
 
 /*
 |--------------------------------------------------------------------------
-| HasProjects Trait
+| BelongsToManyProjects Trait
 |--------------------------------------------------------------------------
 |
 | Trait to add many to many relationship to models.
 |
 */
 
-namespace Tjventurini\VoyagerProjects\Traits;
+namespace Tjventurini\VoyagerProjects\Traits\Relationships;
 
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
-trait HasProjects
+trait BelongsToManyProjects
 {
     /**
      * Relationship with project model.
@@ -22,11 +22,12 @@ trait HasProjects
      */
     public function projects(): BelongsToMany
     {
+        $key = $this->getRelationshipKey();
         $model = config('voyager-projects.models.projects');
-        $table = config('voyager-projects.tables.users');
+        $table = config('voyager-projects.tables.' . $key);
         $project_id = config('voyager-projects.foreign_keys.project');
-        $user_id = config('voyager-projects.foreign_keys.users');
+        $foreign_key = config('voyager-projects.foreign_keys.' . $key);
 
-        return $this->belongsToMany($model, $table, $user_id, $project_id);
+        return $this->belongsToMany($model, $table, $foreign_key, $project_id);
     }
 }

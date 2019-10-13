@@ -61,20 +61,6 @@ class Project extends Model
     }
 
     /**
-     * Relationship with tag model.
-     * @return Illuminate\Database\Eloquent\Relations\BelongsToMany The requested relationship.
-     */
-    public function tags(): BelongsToMany
-    {
-        $model = config('voyager-projects.models.tags');
-        $table = config('voyager-projects.tables.tags');
-        $project_id = config('voyager-projects.foreign_keys.projects');
-        $tag_id = config('voyager-projects.foreign_keys.tags');
-
-        return $this->belongsToMany($model, $table, $project_id, $tag_id);
-    }
-
-    /**
      * Relationship with post model.
      * @return Illuminate\Database\Eloquent\Relations\HasMany The requested relationship.
      */
