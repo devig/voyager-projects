@@ -123,7 +123,7 @@ class VoyagerProjectsDataRowsSeeder extends Seeder
             ]);
 
             // field users
-            $field_name = DataRow::updateOrCreate([
+            $field_users = DataRow::updateOrCreate([
                 'data_type_id' => $data_type->id,
                 'field' => 'project_belongstomany_user_relationship',
             ], [
@@ -165,7 +165,7 @@ class VoyagerProjectsDataRowsSeeder extends Seeder
                 'details' => [
                     'format' => '%Y-%m-%d %H:%M',
                 ],
-                'order' => 1,
+                'order' => 99,
             ]);
 
             // field updated_at
@@ -184,7 +184,7 @@ class VoyagerProjectsDataRowsSeeder extends Seeder
                 'details' => [
                     'format' => '%Y-%m-%d %H:%M',
                 ],
-                'order' => 1,
+                'order' => 99,
             ]);
         });
     }
