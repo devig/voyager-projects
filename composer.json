@@ -8,11 +8,12 @@
             "email": "thomas@venturini.codes"
         }
     ],
+    "license": "MIT",
     "require": {
-        "cviebrock/eloquent-sluggable": "^4.8",
-        "nuwave/lighthouse": "^3.7",
-        "tcg/voyager": "^1.2",
-        "tjventurini/voyager-tags": "*"
+        "nuwave/lighthouse": "^4.6",
+        "tcg/voyager": "^1.3",
+        "cviebrock/eloquent-sluggable": "^6.0",
+        "tjventurini/voyager-tags": "^0.1.0"
     },
     "require-dev": {
         "mll-lab/laravel-graphql-playground": "^1.0"
