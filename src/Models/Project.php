@@ -4,7 +4,7 @@ namespace Tjventurini\VoyagerProjects\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Cviebrock\EloquentSluggable\Sluggable;
-use Tjventurini\VoyagerCMS\Scopes\UsersScope;
+use Tjventurini\VoyagerProjects\Scopes\UsersScope;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
@@ -58,20 +58,6 @@ class Project extends Model
         $user_id = config('voyager-projects.foreign_keys.users');
 
         return $this->belongsToMany($model, $table, $project_id, $user_id);
-    }
-
-    /**
-     * Relationship with tag model.
-     * @return Illuminate\Database\Eloquent\Relations\BelongsToMany The requested relationship.
-     */
-    public function tags(): BelongsToMany
-    {
-        $model = config('voyager-projects.models.tags');
-        $table = config('voyager-projects.tables.tags');
-        $project_id = config('voyager-projects.foreign_keys.projects');
-        $tag_id = config('voyager-projects.foreign_keys.tags');
-
-        return $this->belongsToMany($model, $table, $project_id, $tag_id);
     }
 
     /**

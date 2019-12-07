@@ -23,15 +23,20 @@ return [
 
     'models' => [
         'users' => \App\User::class,
-        'tags' => \Tjventurini\VoyagerTags\Models\Tag::class,
+        'user' => \App\User::class,
+        'tags' => \Tjventurini\VoyagerProjects\Models\Tag::class,
+        'tag' => \Tjventurini\VoyagerProjects\Models\Tag::class,
         'posts' => \Tjventurini\VoyagerPosts\Models\Post::class,
         'pages' => \Tjventurini\VoyagerPages\Models\Page::class,
         'content-block' => \Tjventurini\VoyagerContentBlocks\Models\ContentBlock::class,
+        'projects' => \Tjventurini\VoyagerProjects\Models\Project::class,
     ],
    
     'tables' => [
         'users' => 'project_user',
+        'user' => 'project_user',
         'tags' => 'project_tag',
+        'tag' => 'project_tag',
         'pages' => 'page_project',
     ],
 
@@ -39,7 +44,9 @@ return [
         'projects' => 'project_id',
         'project' => 'project_id',
         'users' => 'user_id',
+        'user' => 'user_id',
         'tags' => 'tag_id',
+        'tag' => 'tag_id',
         'pages' => 'page_id',
     ],
 ];

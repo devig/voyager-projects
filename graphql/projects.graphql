@@ -17,11 +17,11 @@ type Project {
     slug: String!
     url: String!
 
-    users: [User!]!
-    tags: [Tag!]!
-    posts: [Post!]!
-    pages: [Page!]!
-    contentBlocks: [ContentBlock!]!
+    # users: [User!]!
+    # tags: [Tag!]!
+    # posts: [Post!]!
+    # pages: [Page!]!
+    # contentBlocks: [ContentBlock!]!
 
     created_at: DateTime
     updated_at: DateTime
