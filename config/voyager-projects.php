@@ -30,6 +30,7 @@ return [
         'pages' => \Tjventurini\VoyagerPages\Models\Page::class,
         'content-block' => \Tjventurini\VoyagerContentBlocks\Models\ContentBlock::class,
         'projects' => \Tjventurini\VoyagerProjects\Models\Project::class,
+        'project' => \Tjventurini\VoyagerProjects\Models\Project::class,
     ],
    
     'tables' => [

@@ -13,7 +13,8 @@ class VoyagerProjectsInstall extends Command
      */
     protected $signature = 'voyager-projects:install {-- demo : Wether the demo content should be added or not.}
                         {-- force : Wether the whole project should be refreshed.}
-                        {--voyager : Wether voyager should be installed.}';
+                        {--voyager : Wether voyager should be installed.}
+                        {--refresh : Wether voyager the whole project should be refreshed.}';
 
     /**
      * The console command description.
@@ -111,7 +112,7 @@ class VoyagerProjectsInstall extends Command
     private function runMigrations(): void
     {
         // if force flag is set we want to refresh the migrations
-        if ($this->force()) {
+        if ($this->option('refresh')) {
             $this->call('migrate:refresh');
             return;
         }
@@ -132,6 +133,16 @@ class VoyagerProjectsInstall extends Command
         }
 
         $this->call('voyager:install');
+
+        $this->call('vendor:publish', [
+            '--provider' => "TCG\Voyager\VoyagerServiceProvider",
+            '--force' => $this->force()
+        ]);
+
+        $this->call('vendor:publish', [
+            '--provider' => "Intervention\Image\ImageServiceProviderLaravel5",
+            '--force' => $this->force()
+        ]);
     }
 
     /**
