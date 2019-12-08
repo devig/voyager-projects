@@ -12,7 +12,8 @@ class VoyagerProjectsInstall extends Command
      * @var string
      */
     protected $signature = 'voyager-projects:install {-- demo : Wether the demo content should be added or not.}
-                        {-- force : Wether the whole project should be refreshed.}';
+                        {-- force : Wether the whole project should be refreshed.}
+                        {--voyager : Wether voyager should be installed.}';
 
     /**
      * The console command description.
@@ -56,30 +57,20 @@ class VoyagerProjectsInstall extends Command
             return 1;
         }
 
-        // install voyager
-        $this->installVoyager();
-
         // provision packages
         $this->provisionAssets();
 
         // run migrations
         $this->runMigrations();
 
+        // install voyager
+        $this->installVoyager();
+
         // run seeders
         $this->runSeeders();
 
         // clear cache
         $this->call('cache:clear');
-    }
-
-    /**
-     * Install the voyager admin panel.
-     *
-     * @return void
-     */
-    private function installVoyager(): void
-    {
-        $this->call('voyager:install');
     }
 
     /**
@@ -93,22 +84,22 @@ class VoyagerProjectsInstall extends Command
         $this->call('vendor:publish', [
             '--provider' => "Tjventurini\VoyagerProjects\VoyagerProjectsServiceProvider",
             '--tag' => 'config',
-            '--force' => $this->force();
+            '--force' => $this->force(),
         ]);
         $this->call('vendor:publish', [
             '--provider' => "Tjventurini\VoyagerProjects\VoyagerProjectsServiceProvider",
             '--tag' => 'views',
-            '--force' => $this->force();
+            '--force' => $this->force(),
         ]);
         $this->call('vendor:publish', [
             '--provider' => "Tjventurini\VoyagerProjects\VoyagerProjectsServiceProvider",
             '--tag' => 'lang',
-            '--force' => $this->force();
+            '--force' => $this->force(),
         ]);
         $this->call('vendor:publish', [
             '--provider' => "Tjventurini\VoyagerProjects\VoyagerProjectsServiceProvider",
             '--tag' => 'graphql',
-            '--force' => $this->force();
+            '--force' => $this->force(),
         ]);
     }
 
@@ -127,6 +118,20 @@ class VoyagerProjectsInstall extends Command
 
         // otherwise we run normal migrations
         $this->call('migrate');
+    }
+
+    /**
+     * Install voyager admin panel.
+     *
+     * @return void
+     */
+    private function installVoyager(): void
+    {
+        if (!$this->option('voyager') && !$this->force()) {
+            return;
+        }
+
+        $this->call('voyager:install');
     }
 
     /**
