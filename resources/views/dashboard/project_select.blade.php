@@ -1,4 +1,8 @@
 <?php
+    // check if user can acces projects
+if (!\Auth::user()->hasPermission('browse_projects')) {
+    return;
+}
     // get project model
     $Model = app(config('voyager-projects.models.project'));
     // get project from GET or SESSION
@@ -15,7 +19,11 @@
     <form id="project-select-form" method="GET">
         <select name="project" id="project-select-form-select">
             <option value="all">{{ trans('projects::projects.project_select.show_all') }}</option>
-            @foreach ($Model->all() as $Project)
+            <?php
+                $projects = $Model->withoutGlobalScope(\Tjventurini\VoyagerProjects\Scopes\ProjectSession::class)
+                                    ->get();
+            ?>
+            @foreach ($projects as $Project)
                 <option 
                     value="{{ $Project->slug }}" 
                     @if ($selected_project && $Project->slug == $selected_project) selected="selected" @endif

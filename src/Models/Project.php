@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 use Cviebrock\EloquentSluggable\Sluggable;
 use Tjventurini\VoyagerProjects\Scopes\UsersScope;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Tjventurini\VoyagerProjects\Scopes\ProjectSession;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
 class Project extends Model
@@ -35,6 +36,7 @@ class Project extends Model
 
         // apply scopes
         static::addGlobalScope(new UsersScope);
+        static::addGlobalScope(new ProjectSession);
     }
     
     /*
