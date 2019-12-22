@@ -2,10 +2,12 @@
 
 namespace Tjventurini\VoyagerProjects;
 
+use TCG\Voyager\Facades\Voyager;
 use Illuminate\Events\Dispatcher;
 use Illuminate\Support\ServiceProvider;
 use Tjventurini\VoyagerProjects\Models\Project;
 use Tjventurini\VoyagerProjects\Observers\ProjectObserver;
+use Tjventurini\VoyagerProjects\Actions\ProjectSessionSelectAction;
 use Tjventurini\VoyagerProjects\Console\Commands\VoyagerProjectsInstall;
 
 class VoyagerProjectsServiceProvider extends ServiceProvider
@@ -58,6 +60,9 @@ class VoyagerProjectsServiceProvider extends ServiceProvider
                 VoyagerProjectsInstall::class,
             ]);
         }
+
+        // register voyager actions
+        Voyager::addAction(ProjectSessionSelectAction::class);
     }
 
     /**
