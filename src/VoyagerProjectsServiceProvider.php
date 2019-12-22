@@ -7,6 +7,7 @@ use Illuminate\Events\Dispatcher;
 use Illuminate\Support\ServiceProvider;
 use Tjventurini\VoyagerProjects\Models\Project;
 use Tjventurini\VoyagerProjects\Observers\ProjectObserver;
+use Tjventurini\VoyagerProjects\Actions\ProjectOpenUrlAction;
 use Tjventurini\VoyagerProjects\Actions\ProjectSessionSelectAction;
 use Tjventurini\VoyagerProjects\Console\Commands\VoyagerProjectsInstall;
 
@@ -63,6 +64,7 @@ class VoyagerProjectsServiceProvider extends ServiceProvider
 
         // register voyager actions
         Voyager::addAction(ProjectSessionSelectAction::class);
+        Voyager::addAction(ProjectOpenUrlAction::class);
     }
 
     /**
