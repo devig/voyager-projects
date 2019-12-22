@@ -2,7 +2,7 @@
     // get project model
     $Model = app(config('voyager-projects.models.project'));
     // get project from GET or SESSION
-    $selected_project = request()->input('project', false) || session('project', false);
+    $selected_project = session('project', null);
 ?>
 
 <style type="text/css">
@@ -12,13 +12,13 @@
 </style>
 
 <div id="project-select">
-    <form id="project-select-form" method="GET" action="?">
+    <form id="project-select-form" method="GET">
         <select name="project" id="project-select-form-select">
-            <option value="">{{ trans('projects::projects.project_select.please_select') }}</option>
+            <option value="all">{{ trans('projects::projects.project_select.show_all') }}</option>
             @foreach ($Model->all() as $Project)
                 <option 
                     value="{{ $Project->slug }}" 
-                    @if ($Project->slug == $selected_project) selected="selected" @endif
+                    @if ($selected_project && $Project->slug == $selected_project) selected="selected" @endif
                 >{{ $Project->name }}</option>
             @endforeach
         </select>

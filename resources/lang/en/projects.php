@@ -55,7 +55,7 @@ return [
     */
     
     'project_select' => [
-        'please_select' => 'Please select a project.',
+        'show_all' => 'All projects',
     ],
     
 ];
