@@ -36,7 +36,20 @@ class ProjectInSession
             return;
         }
 
+        // check if value is set to all
+        if ($project == 'all') {
+            return;
+        }
+
+        // find project in database
+        $Project = app(config('voyager-projects.models.project'))
+                    ->where('slug', $project)
+                    ->firstOrFail();
+
         // set project in session
-        $request->session()->put('project', $project);
+        $request->session()->put('project', [
+            'id' => $Project->id,
+            'slug' => $Project->slug,
+        ]);
     }
 }

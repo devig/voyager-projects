@@ -26,7 +26,7 @@ if (!\Auth::user()->hasPermission('browse_projects')) {
             @foreach ($projects as $Project)
                 <option 
                     value="{{ $Project->slug }}" 
-                    @if ($selected_project && $Project->slug == $selected_project) selected="selected" @endif
+                    @if ($selected_project && $Project->slug == $selected_project['slug']) selected="selected" @endif
                 >{{ $Project->name }}</option>
             @endforeach
         </select>

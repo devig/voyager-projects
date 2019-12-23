@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Scope;
 
-class ProjectSession implements Scope
+class BelongsToProjectScope implements Scope
 {
     /**
      * Apply the scope to a given Eloquent query builder.
@@ -25,12 +25,12 @@ class ProjectSession implements Scope
             return;
         }
 
-        // check if project is set to 'all'
-        if ($project == 'all') {
+        // check if there is a project id set
+        if (!$project['id'] ?? null) {
             return;
         }
 
         // set project scope
-        $builder->where('slug', $project);
+        $builder->where(config('voyager-projects.foreign_keys.project'), $project['id']);
     }
 }

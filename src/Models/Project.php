@@ -7,11 +7,10 @@ use Cviebrock\EloquentSluggable\Sluggable;
 use Tjventurini\VoyagerProjects\Scopes\UsersScope;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
-use Tjventurini\VoyagerProjects\Traits\ProjectSessionScope;
 
 class Project extends Model
 {
-    use Sluggable, ProjectSessionScope;
+    use Sluggable;
     
     protected $guarded = ['id'];
 
