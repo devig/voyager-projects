@@ -52,3 +52,18 @@ php artisan voyager-projects:install --force
 
 Of course you can combine all of these flags.
 
+## Projects Widget
+
+The project widget is a small utility, that helps you select the project scope you want to work with and save 
+it to the session. To add it to the voyager navigation, just copy the following line into your `resources/views
+/vendor/voyager/dashboard/sidebar.blade.php` file inside of your voyager resources.
+
+```blade
+</div>
+    <!-- past this line in around line 30, just before the adminmenu container -->
+    @include('voyager::projects.dashboard.project_select')
+<div id="adminmenu">
+```
+
+Now you should have a drop-down item in the navigation of your voyager admin panel. There you can select the project
+ you want to work in.

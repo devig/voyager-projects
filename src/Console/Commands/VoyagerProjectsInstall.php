@@ -67,27 +67,11 @@ class VoyagerProjectsInstall extends Command
         // install voyager
         $this->installVoyager();
 
-        // install dependencies
-        $this->dependencies();
-
         // run seeders
         $this->runSeeders();
 
         // clear cache
         $this->call('cache:clear');
-    }
-
-    /**
-     * Dependencies.
-     *
-     * @return void
-     */
-    private function dependencies(): void
-    {
-        // install voyager-tags package
-        $this->call('voyager-tags:install', [
-            '--demo' => $this->option('demo'),
-        ]);
     }
 
     /**
