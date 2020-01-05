@@ -3,10 +3,7 @@
 namespace Tjventurini\VoyagerProjects\Seeds;
 
 use App\User;
-use TCG\Voyager\Models\Menu;
 use Illuminate\Database\Seeder;
-use TCG\Voyager\Models\MenuItem;
-use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Tjventurini\VoyagerProjects\Models\Project;
 
@@ -19,28 +16,30 @@ class VoyagerProjectsDemoContentSeeder extends Seeder
      */
     public function run()
     {
-        $User = $this->user();
-        $this->projects($User);
+        $Admin = $this->admin();
+        $this->projects($Admin);
+        $this->users();
     }
 
     /**
      * @return mixed
      */
-    private function user(): User
+    private function admin(): User
     {
         // create user
-        $User = User::firstOrCreate(['email' => 'admin@admin.com'], [
+        $Admin = User::firstOrCreate(['email' => 'admin@admin.com'], [
             'name'     => 'Admin',
             'password' => Hash::make('password'),
             'role_id'  => 1,
         ]);
-        return $User;
+
+        return $Admin;
     }
 
     /**
-     * @param $User
+     * @param $Admin
      */
-    private function projects($User): void
+    private function projects($Admin): void
     {
         // create project
         $HelloWorldProject_1 = Project::updateOrCreate(['slug' => 'hello-world-1'], [
@@ -59,9 +58,33 @@ class VoyagerProjectsDemoContentSeeder extends Seeder
         ]);
 
         // connect projects with user
-        $User->projects()->sync([
+        $Admin->projects()->sync([
             $HelloWorldProject_1->id,
             $HelloWorldProject_2->id,
         ]);
+    }
+
+    /**
+     * Create demo users.
+     *
+     * @return void
+     */
+    private function users(): void
+    {
+        // create users
+        $John = User::firstOrCreate(['email' => 'john.doe@example.com'], [
+            'name'     => 'John Doe',
+            'password' => Hash::make('password'),
+            'role_id'  => 1,
+        ]);
+        $Jane = User::firstOrCreate(['email' => 'jane.doe@example.com'], [
+            'name'     => 'Jane Doe',
+            'password' => Hash::make('password'),
+            'role_id'  => 2,
+        ]);
+
+        // assign users to projects
+        $John->projects()->sync([1]);
+        $Jane->projects()->sync([2]);
     }
 }

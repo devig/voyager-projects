@@ -5,6 +5,7 @@ namespace Tjventurini\VoyagerProjects\Models;
 use Illuminate\Database\Eloquent\Model;
 use Cviebrock\EloquentSluggable\Sluggable;
 use Tjventurini\VoyagerProjects\Scopes\UsersScope;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
 class Project extends Model
 {
@@ -33,6 +34,30 @@ class Project extends Model
 
         // apply scopes
         static::addGlobalScope(new UsersScope);
+    }
+
+    /*
+    |--------------------------------------------------------------------------
+    | Relationships
+    |--------------------------------------------------------------------------
+    |
+    | In this section you will find all relationships of this model.
+    |
+    */
+
+    /**
+     * Relationship with user model.
+     *
+     * @return BelongsToMany
+     */
+    public function users(): BelongsToMany
+    {
+        $model = config('voyager-projects.models.user');
+        $table = config('voyager-projects.tables.user');
+        $project_id = config('voyager-projects.foreign_keys.project');
+        $user_id = config('voyager-projects.foreign_keys.user');
+
+        return $this->belongsToMany($model, $table, $project_id, $user_id);
     }
 
     /*
