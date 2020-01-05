@@ -67,11 +67,27 @@ class VoyagerProjectsInstall extends Command
         // install voyager
         $this->installVoyager();
 
+        // install dependencies
+        $this->dependencies();
+
         // run seeders
         $this->runSeeders();
 
         // clear cache
         $this->call('cache:clear');
+    }
+
+    /**
+     * Dependencies.
+     *
+     * @return void
+     */
+    private function dependencies(): void
+    {
+        // install voyager-tags package
+        $this->call('voyager-tags:install', [
+            '--demo' => $this->option('demo'),
+        ]);
     }
 
     /**
@@ -84,23 +100,23 @@ class VoyagerProjectsInstall extends Command
         // projects
         $this->call('vendor:publish', [
             '--provider' => "Tjventurini\VoyagerProjects\VoyagerProjectsServiceProvider",
-            '--tag' => 'config',
-            '--force' => $this->force(),
+            '--tag'      => 'config',
+            '--force'    => $this->force(),
         ]);
         $this->call('vendor:publish', [
             '--provider' => "Tjventurini\VoyagerProjects\VoyagerProjectsServiceProvider",
-            '--tag' => 'views',
-            '--force' => $this->force(),
+            '--tag'      => 'views',
+            '--force'    => $this->force(),
         ]);
         $this->call('vendor:publish', [
             '--provider' => "Tjventurini\VoyagerProjects\VoyagerProjectsServiceProvider",
-            '--tag' => 'lang',
-            '--force' => $this->force(),
+            '--tag'      => 'lang',
+            '--force'    => $this->force(),
         ]);
         $this->call('vendor:publish', [
             '--provider' => "Tjventurini\VoyagerProjects\VoyagerProjectsServiceProvider",
-            '--tag' => 'graphql',
-            '--force' => $this->force(),
+            '--tag'      => 'graphql',
+            '--force'    => $this->force(),
         ]);
     }
 
@@ -128,7 +144,7 @@ class VoyagerProjectsInstall extends Command
      */
     private function installVoyager(): void
     {
-        if (!$this->option('voyager') && !$this->force()) {
+        if ( ! $this->option('voyager') && ! $this->force()) {
             return;
         }
 
@@ -136,12 +152,12 @@ class VoyagerProjectsInstall extends Command
 
         $this->call('vendor:publish', [
             '--provider' => "TCG\Voyager\VoyagerServiceProvider",
-            '--force' => $this->force()
+            '--force'    => $this->force(),
         ]);
 
         $this->call('vendor:publish', [
             '--provider' => "Intervention\Image\ImageServiceProviderLaravel5",
-            '--force' => $this->force()
+            '--force'    => $this->force(),
         ]);
     }
 

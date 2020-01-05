@@ -19,30 +19,49 @@ class VoyagerProjectsDemoContentSeeder extends Seeder
      */
     public function run()
     {
+        $User = $this->user();
+        $this->projects($User);
+    }
+
+    /**
+     * @return mixed
+     */
+    private function user(): User
+    {
         // create user
-        User::firstOrCreate([
-            'email' => 'admin@admin.com'
-        ], [
-            'name' => 'Admin',
+        $User = User::firstOrCreate(['email' => 'admin@admin.com'], [
+            'name'     => 'Admin',
             'password' => Hash::make('password'),
-            'role_id' => 1
+            'role_id'  => 1,
         ]);
-        
+        return $User;
+    }
+
+    /**
+     * @param $User
+     */
+    private function projects($User): void
+    {
         // create project
-        $HelloWorldProject = Project::updateOrCreate([
-            'slug' => 'hello-world'
-        ], [
-            'name' => 'Hello World',
+        $HelloWorldProject_1 = Project::updateOrCreate(['slug' => 'hello-world-1'], [
+            'name'        => 'Hello World 1',
             'description' => 'Hello World Project',
-            'url' => 'http://hello-world.com',
-            'token' => 'LYbggOGeifHHoKj38qjbYBajW91Q176mXWKD4xM2TjzhcwSlTn9hUEhTJw41'
+            'url'         => 'http://hello-world.com',
+            'token'       => 'LYbggOGeifHHoKj38qjbYBajW91Q176mXWKD4xM2TjzhcwSlTn9hUEhTJw41',
+        ]);
+
+        // create second project
+        $HelloWorldProject_2 = Project::updateOrCreate(['slug' => 'hello-world-2'], [
+            'name'        => 'Hello World 2',
+            'description' => 'Second Hello World Project',
+            'url'         => 'http://hello-world-2.com',
+            'token'       => 'LYbggOGeifHHoKj38qjbYBajW92Q176mXWKD4xM2TjzhcwSlTn9hUEhTJw41',
         ]);
 
         // connect projects with user
-        $User = User::findOrFail(1)
-            ->projects()
-            ->sync([
-                $HelloWorldProject->id
-            ]);
+        $User->projects()->sync([
+            $HelloWorldProject_1->id,
+            $HelloWorldProject_2->id,
+        ]);
     }
 }
