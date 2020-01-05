@@ -10,7 +10,7 @@
 |
 */
 
-namespace Tjventurini\VoyagerProjects\Traits;
+namespace Tjventurini\VoyagerProjects\Models\Traits;
 
 trait GetRelationshipKey
 {

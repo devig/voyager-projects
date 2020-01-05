@@ -9,7 +9,7 @@
 |
 */
 
-namespace Tjventurini\VoyagerProjects\Traits\Relationships;
+namespace Tjventurini\VoyagerProjects\Models\Traits\Relationships;
 
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 

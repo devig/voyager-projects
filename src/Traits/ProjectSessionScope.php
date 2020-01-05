@@ -1,6 +1,6 @@
 <?php
 
-namespace Tjventurini\VoyagerProjects\Traits;
+namespace Tjventurini\VoyagerProjects\Models\Traits;
 
 use Tjventurini\VoyagerProjects\Scopes\BelongsToProjectScope;
 
