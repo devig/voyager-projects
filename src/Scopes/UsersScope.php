@@ -11,16 +11,17 @@ class UsersScope implements Scope
     /**
      * Apply the scope to a given Eloquent query builder.
      *
-     * @param  \Illuminate\Database\Eloquent\Builder $builder
-     * @param  \Illuminate\Database\Eloquent\Model   $model
+     * @param \Illuminate\Database\Eloquent\Builder $builder
+     * @param \Illuminate\Database\Eloquent\Model $model
      *
      * @return void
      */
     public function apply(Builder $builder, Model $model)
     {
-        if (\Auth::user() && \Auth::user()->role->name != 'admin') {
+        $ignored_groups = config('voyager-projects.user_scope.ignored_groups');
+        if (\Auth::user() && ! in_array(\Auth::user()->role->name, $ignored_groups)) {
             $builder->whereHas('users', function ($query) {
-                $query->where(config('voyager-projects.foreign_keys.users'), \Auth::user()->id);
+                $query->where(config('voyager-projects.foreign_keys.user'), \Auth::user()->id);
             });
         }
     }

@@ -9,7 +9,7 @@
 |
 */
 
-namespace Tjventurini\VoyagerProjects\Traits\Relationships;
+namespace Tjventurini\VoyagerProjects\Models\Traits\Relationships;
 
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
@@ -22,7 +22,7 @@ trait BelongsToProject
      */
     public function projects(): BelongsTo
     {
-        $model = config('voyager-projects.models.projects');
+        $model = config('voyager-projects.models.project');
         $project_id = config('voyager-projects.foreign_keys.project');
 
         return $this->belongsToMany($model, $project_id);

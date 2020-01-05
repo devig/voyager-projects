@@ -32,23 +32,38 @@ return [
     ...
 ```
 
-You will need to publish the assets of this package to overwrite the things you need. Here is a list of all available publishable resources as the commands needed to publish them.
+After updating the voyager configuration, you can just call the `install` command of this package.
 
 ```bash
-php artisan vendor:publish --provider="Tjventurini\VoyagerProjects\VoyagerProjectsServiceProvider" --tag=config --force
-php artisan vendor:publish --provider="Tjventurini\VoyagerProjects\VoyagerProjectsServiceProvider" --tag=views --force
-php artisan vendor:publish --provider="Tjventurini\VoyagerProjects\VoyagerProjectsServiceProvider" --tag=lang --force
-php artisan vendor:publish --provider="Tjventurini\VoyagerProjects\VoyagerProjectsServiceProvider" --tag=graphql --force
+php artisan voyager-projects:install
 ```
 
-Now run the migrations.
+If you want to install voyager or the demo content with it, you can add the following flags.
 
 ```bash
-php artisan migrate
+php artisan voyager-projects:install --voyager --demo
 ```
 
-You will also need to run the seeders to ensure that permissions and other database requirements are met.
+If you ever need to republish all assets of this package, you can use the `--force` flag for that.
 
-```bash
-php artisan db:seed --class="Tjventurini\VoyagerProjects\Seeds\VoyagerProjectsDatabaseSeeder"
+```shell script
+php artisan voyager-projects:install --force
 ```
+
+Of course you can combine all of these flags.
+
+## Projects Widget
+
+The project widget is a small utility, that helps you select the project scope you want to work with and save 
+it to the session. To add it to the voyager navigation, just copy the following line into your `resources/views
+/vendor/voyager/dashboard/sidebar.blade.php` file inside of your voyager resources.
+
+```blade
+</div>
+    <!-- past this line in around line 30, just before the adminmenu container -->
+    @include('voyager::projects.dashboard.project_select')
+<div id="adminmenu">
+```
+
+Now you should have a drop-down item in the navigation of your voyager admin panel. There you can select the project
+ you want to work in.

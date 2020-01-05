@@ -43,5 +43,19 @@ return [
         'created_at' => 'Created At',
         'updated_at' => 'Updated At',
     ],
+
+    /*
+    |--------------------------------------------------------------------------
+    | Project Select
+    |--------------------------------------------------------------------------
+    |
+    | In this section you will find all translations of the select widget and
+    | navigation.
+    |
+    */
+    
+    'project_select' => [
+        'show_all' => 'All projects',
+    ],
     
 ];
