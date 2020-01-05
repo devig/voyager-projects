@@ -1,30 +1,29 @@
 <?php
-
 /*
 |--------------------------------------------------------------------------
-| BelongsToProject Trait
+| HasManyProjects Trait
 |--------------------------------------------------------------------------
 |
-| Trait to add a belongs to relationship to models.
+| Trait to add HasMany Relationship with Project to a given model.
 |
 */
 
 namespace Tjventurini\VoyagerProjects\Models\Traits\Relationships;
 
-use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
-trait BelongsToProject
+trait HasManyProjects
 {
     /**
-     * Relationship with project model.
+     * HasMany relationship with Project model.
      *
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     * @return HasMany
      */
-    public function projects(): BelongsTo
+    public function projects(): HasMany
     {
         $model = config('voyager-projects.models.project');
         $project_id = config('voyager-projects.foreign_keys.project');
 
-        return $this->belongsToMany($model, $project_id);
+        return $this->hasMany($model, $project_id);
     }
 }
