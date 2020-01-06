@@ -11,10 +11,10 @@ class VoyagerProjectsInstall extends Command
      *
      * @var string
      */
-    protected $signature = 'voyager-projects:install {-- demo : Wether the demo content should be added or not.}
+    protected $signature = 'voyager-projects:install {-- demo : Whether the demo content should be added or not.}
                         {-- force : Whether the resources should be republished or not.}
-                        {--voyager : Wether voyager should be installed.}
-                        {--refresh : Wether voyager the whole project should be refreshed.}';
+                        {--voyager : Whether voyager should be installed.}
+                        {--refresh : Whether voyager the whole project should be refreshed.}';
 
     /**
      * The console command description.
