@@ -25,6 +25,6 @@ trait BelongsToProject
         $model = config('voyager-projects.models.project');
         $project_id = config('voyager-projects.foreign_keys.project');
 
-        return $this->belongsToMany($model, $project_id);
+        return $this->belongsTo($model, $project_id);
     }
 }
