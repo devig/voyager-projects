@@ -12,7 +12,7 @@ class VoyagerProjectsInstall extends Command
      * @var string
      */
     protected $signature = 'voyager-projects:install {-- demo : Wether the demo content should be added or not.}
-                        {-- force : Wether the whole project should be refreshed.}
+                        {-- force : Whether the resources should be republished or not.}
                         {--voyager : Wether voyager should be installed.}
                         {--refresh : Wether voyager the whole project should be refreshed.}';
 
@@ -54,6 +54,7 @@ class VoyagerProjectsInstall extends Command
         if (config('app.env') == 'production') {
             // if so, print error message
             $this->error('You are in production mode!');
+
             // terminate command with error state (>0)
             return 1;
         }
@@ -114,6 +115,7 @@ class VoyagerProjectsInstall extends Command
         // if force flag is set we want to refresh the migrations
         if ($this->option('refresh')) {
             $this->call('migrate:refresh');
+
             return;
         }
 
